@@ -1,0 +1,30 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  background-color: #ffffff;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  /* webkit scroll bar */
+  scrollbar-width: thin;
+  scrollbar-color: #e2b900ff #0f0f0f;
+  user-select: none;
+  
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+ul{
+  list-style: none;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: #fff;
+}
