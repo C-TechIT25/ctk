@@ -889,7 +889,7 @@ export default function Loading() {
             sx={{
               color: "#FFD54F",
               fontWeight: "bold",
-              fontSize: { xs: "3rem", sm: "5rem", md: "6rem" },
+              fontSize: { xs: "2rem", sm: "5rem", md: "6rem" },
               fontFamily: "'Keania One', sans-serif",
               textShadow: "3px 3px 6px rgba(0, 0, 0, 0.7)",
               opacity: 0,
