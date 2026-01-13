@@ -148,7 +148,7 @@ const potCSS = `
     position: absolute;
     width: 100px;
     height: 20px;
-    background: linear-gradient(90deg, #FFD700 0%, #FFB300 50%, #FFD700 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
     border-radius: 50%;
     bottom: 135px;
     left: 10px;
@@ -191,9 +191,9 @@ const potCSS = `
 
   .flame {
     position: absolute;
-    background: linear-gradient(to bottom, #FFD700, #FF4500);
-    border-radius: 50% 50% 20% 20%;
-    filter: blur(5px);
+    background: linear-gradient(to bottom, #ffffff, #ffffff);
+    border-radius: 100% 50% 20% 20%;
+    filter: blur(4px);
     animation: flameFloat 1s ease-in-out infinite;
   }
 
@@ -279,19 +279,19 @@ const potCSS = `
   .piece-1 {
     width: 60px;
     height: 50px;
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    clip-path: polygon(10% 0%, 10% 50%, 50% 100%, 0% 50%);
   }
 
   .piece-2 {
     width: 40px;
     height: 60px;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
 
   .piece-3 {
     width: 50px;
     height: 40px;
-    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
   }
 
   .piece-4 {
@@ -311,7 +311,7 @@ const potCSS = `
     position: absolute;
     width: 140px;
     height: 140px;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
     border-radius: 50%;
     top: 50%;
     left: 50%;
@@ -329,12 +329,12 @@ const potCSS = `
   @keyframes rimGlow {
     0%, 100% { 
       box-shadow: 
-        0 5px 15px rgba(255, 179, 0, 0.4),
+        0 5px 15px rgb(255, 255, 255),
         inset 0 -3px 5px rgba(0,0,0,0.2);
     }
     50% { 
       box-shadow: 
-        0 5px 25px rgba(255, 179, 0, 0.7),
+        0 5px 25px rgb(255, 255, 255),
         inset 0 -3px 5px rgba(0,0,0,0.2);
     }
   }
@@ -350,7 +350,7 @@ const potCSS = `
       opacity: 0.8;
     }
     50% { 
-      transform: translateY(-10px) scale(1.2);
+      transform: translateY(0px) scale(1.2);
       opacity: 1;
     }
   }
