@@ -60,7 +60,7 @@ import { useNavigate } from "react-router-dom";
 
 // Pongal-themed images (you'll need to add these images to your assets)
 import Basketball from "../assets/BasketBall.jpg";
-import Kolam from "../assets/Kolam.jpg";
+import Kolam from "../assets/kolam.jpg";
 import TugOfWar from "../assets/TugOfWar.jpg";
 import MusicalChair from "../assets/MusicalChair.jpg";
 import PotBreaking from "../assets/PotBreaking.jpg";
