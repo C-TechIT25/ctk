@@ -894,7 +894,7 @@ export default function Loading() {
               textShadow: "3px 3px 6px rgba(0, 0, 0, 0.7)",
               opacity: 0,
               transform: "translateY(-50px)",
-              marginBottom: { xs: "2rem", sm: "3rem" },
+              marginBottom: { xs: "4rem", sm: "3rem" },
             }}
           >
             C-Tech KONDATTAM
