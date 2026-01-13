@@ -150,30 +150,18 @@ const potCSS = `
 
   .design-1, .design-2, .design-3 {
     position: absolute;
-    background: #C62828;
+    background: #ffffff;
     border-radius: 5px;
   }
 
-  .design-1 {
+
+  .design-2 {
     width: 60px;
     height: 8px;
-    top: 30px;
+    top: 50px;
     left: 30px;
   }
 
-  .design-2 {
-    width: 8px;
-    height: 40px;
-    top: 50px;
-    left: 56px;
-  }
-
-  .design-3 {
-    width: 40px;
-    height: 8px;
-    top: 70px;
-    left: 40px;
-  }
 
   /* Fire animation */
   .pot-fire {
@@ -623,7 +611,7 @@ export default function Loading() {
       soundRef.current.play();
       setTimeout(() => {
         if (!soundRef.current.playing()) {
-          setAudioEnabled(false);
+          setAudioEnabled(true);
         }
       }, 300);
     };

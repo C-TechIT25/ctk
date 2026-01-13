@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
   Grid,
@@ -65,7 +65,8 @@ import TugOfWar from "../assets/TugOfWar.jpg";
 import MusicalChair from "../assets/MusicalChair.jpg";
 import PotBreaking from "../assets/PotBreaking.jpg";
 import TreasureHunt from "../assets/TreasureHunt.jpg";
-import PongalBanner from "../assets/Banner.png";
+// Import your video file
+import PongalVideo from "../assets/pongalhome.mp4"; // Add your video file to assets folder
 
 // Game data for Pongal
 const cardData = [
@@ -80,7 +81,7 @@ const cardData = [
       "Top 3 players with highest scores win prizes",
       "In case of tie, sudden death round will be conducted",
     ],
-    winners: "1st, 2nd and 3rd place winners",
+    winners: "1st, 2nd place winners",
     type: "individual",
     maxParticipants: null,
   },
@@ -96,7 +97,7 @@ const cardData = [
       "Judging criteria: Creativity, symmetry, traditional elements, neatness",
       "Teams must clean their area after completion",
     ],
-    winners: "1st, 2nd and 3rd place winning teams",
+    winners: "1st, 2nd place winning teams",
     type: "team",
     minMembers: 2,
     maxMembers: 4,
@@ -113,7 +114,7 @@ const cardData = [
       "Proper footwear required (no sandals or flip-flops)",
       "Team captain must be designated before match",
     ],
-    winners: "1st, 2nd and 3rd place winning teams",
+    winners: "1st, 2nd place winning teams",
     type: "team",
     minMembers: 4,
     maxMembers: 6,
@@ -131,7 +132,7 @@ const cardData = [
       "Last person sitting wins",
       "No pushing or physical contact allowed",
     ],
-    winners: "1st, 2nd and 3rd place winners",
+    winners: "1st, 2nd place winners",
     type: "individual",
     maxParticipants: null,
   },
@@ -148,7 +149,7 @@ const cardData = [
       "Pot filled with treats and gifts",
       "Winner gets contents of the pot",
     ],
-    winners: "All successful participants win prizes",
+    winners: "1st, 2nd place winning teams",
     type: "individual",
     maxParticipants: null,
   },
@@ -165,7 +166,7 @@ const cardData = [
       "No use of mobile phones allowed",
       "All clues must be found in sequence",
     ],
-    winners: "1st, 2nd and 3rd place winning teams",
+    winners: "1st, 2nd place winning teams",
     type: "team",
     minMembers: 2,
     maxMembers: 4,
@@ -467,7 +468,7 @@ function WinnerListDialog({ open, onClose }) {
             gutterBottom
             sx={{ fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
           >
-            PONGAL FESTIVAL 2026
+            C-TECH KONDATTAM 2026
           </Typography>
           <Typography
             variant="h6"
@@ -741,7 +742,7 @@ function ChatDialog({ open, onClose }) {
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [messages, setMessages] = useState([
     {
-      text: "Hello! I'm the Pongal Festival assistant. How can I help you?",
+      text: "Hello! I'm the C-Tech KONDATTAM Festival assistant. How can I help you?",
       sender: "bot",
       timestamp: new Date(),
     },
@@ -805,7 +806,7 @@ function ChatDialog({ open, onClose }) {
     ) {
       // List all available games with proper formatting
       responseText =
-        "Pongal Festival Games:\n\n" +
+        "C-Tech KONDATTAM Festival Games:\n\n" +
         cardData
           .map((game, index) => `${index + 1}. ${game.title} (${game.type}) - ${game.desc}`)
           .join("\n\n") +
@@ -816,27 +817,27 @@ function ChatDialog({ open, onClose }) {
       text.includes("date")
     ) {
       responseText =
-        "The Pongal Festival is on January 15th, 2026 from 9 AM to 6 PM.";
+        "The C-Tech KONDATTAM Festival is on January 14th, 2026 from 9 AM to 6 PM.";
     } else if (
       text.includes("pongal") ||
       text.includes("festival") ||
       text.includes("about")
     ) {
       responseText =
-        "Pongal is a harvest festival celebrated in Tamil Nadu, India. It marks the beginning of the sun's northward journey (Uttarayan). The festival is celebrated for four days with various traditional activities and games.";
+        "C-Tech KONDATTAM is a harvest festival celebration at C-Tech Company. It's a day of traditional games, fun activities, and team bonding. Join us for an unforgettable experience!";
     } else if (
       text.includes("hi") ||
       text.includes("hello") ||
       text.includes("hey")
     ) {
       responseText =
-        "Hello! Welcome to Pongal Festival 2026. How can I assist you today? You can ask about games, event details, or festival information.";
+        "Hello! Welcome to C-Tech KONDATTAM 2026. How can I assist you today? You can ask about games, event details, or festival information.";
     } else if (text.includes("game") || text.includes("register")) {
       responseText =
         "You can register for any game by clicking the 'Register Now' button on the game card. For team games, team leader should register with team details. To see available games, ask 'What games are available?'";
     } else if (text.includes("location") || text.includes("where")) {
       responseText =
-        "The festival will be held at the Community Ground, Main Street, Chennai.";
+        "The festival will be held at C-Tech Campus Ground, Chennai.";
     } else if (text.includes("team") || text.includes("group")) {
       responseText =
         "Team games include Kolam Design (2-4 members), Tug of War (4-6 members), and Treasure Hunt (2-4 members). Team leader should register with all team members' names.";
@@ -908,10 +909,10 @@ function ChatDialog({ open, onClose }) {
               color: "#C62828",
             }}
           >
-            P
+            C
           </Avatar>
           <Typography variant="h6" component="span" fontFamily="inherit">
-            Pongal Assistant
+            C-Tech Assistant
           </Typography>
         </Box>
         <IconButton
@@ -1404,7 +1405,7 @@ function RegisterDialog({ open, onClose, game }) {
       <DialogContent dividers sx={{ p: 3, fontFamily: "inherit" }}>
         {success ? (
           <Alert severity="success" sx={{ mb: 2, backgroundColor: "#C8E6C9", color: "#1B5E20" }}>
-            Registration successful! We'll see you at the Pongal Festival.
+            Registration successful! We'll see you at the C-Tech KONDATTAM Festival.
           </Alert>
         ) : (
           <Box component="form" onSubmit={handleSubmit}>
@@ -1610,6 +1611,21 @@ export default function Games() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate();
+  const videoRef = useRef(null);
+
+  // Auto-play video on component mount
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.log("Video autoplay blocked:", err);
+        // If autoplay is blocked, mute and try again
+        videoRef.current.muted = true;
+        videoRef.current.play().catch(err2 => {
+          console.log("Muted video autoplay also blocked:", err2);
+        });
+      });
+    }
+  }, []);
 
   const handleRulesClick = (game) => {
     setSelectedGame(game);
@@ -1723,37 +1739,49 @@ export default function Games() {
         </Toolbar>
       </AppBar>
 
+      {/* Video Banner Section */}
       <Box
         sx={{
-          width: { xs: "95%", sm: "90%", md: "80%" },
+          width: { xs: "100%", sm: "100%", md: "100%" },
           margin: "auto",
-          mt: { xs: 2, sm: 4 },
+          mt: { xs: 0, sm: 0 },
           mb: 4,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          borderRadius: 4,
+          borderRadius: 0,
           userSelect: "none",
           overflow: "hidden",
-          boxShadow: "0 10px 30px rgba(198, 40, 40, 0.2)",
-          border: "3px solid #C62828",
+          position: "relative",
+          height: { xs: "25vh", sm: "50vh", md: "100vh" },
+                      boxShadow:"none"
+
         }}
       >
-        <img
-          src={PongalBanner}
-          alt="Pongal Festival Banner"
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
           style={{
             width: "100%",
-            height: "auto",
-            maxHeight: "60vh",
+            height: "100%",
             objectFit: "cover",
+            objectPosition: "center",
+            backgroundColor: "white",
+            boxShadow:"none"
           }}
-        />
+        >
+          <source src={PongalVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+       
       </Box>
 
       <Box
-        sx={{
-          background: "linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%)",
+        sx={{            
+          background: "linear-gradient(135deg, #FFFDE7 0%, #FFF3E0 100%)",
           py: 5,
           display: "flex",
           justifyContent: "center",
@@ -1762,7 +1790,7 @@ export default function Games() {
           userSelect: "none",
         }}
       >
-        <Box sx={{ px: { xs: 1, sm: 3, md: 4 }, width: "100%" }}>
+        <Box sx={{  width: "100%" }}>
           <Typography
             variant="h1"
             component="h2"
@@ -1775,6 +1803,7 @@ export default function Games() {
               fontFamily: "'Keania One', sans-serif",
               fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
               textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
+              mt: { xs: -4, sm: 0}
             }}
           >
             🎯 Game Registration
@@ -1788,7 +1817,7 @@ export default function Games() {
             fontFamily="inherit"
             sx={{
               maxWidth: 800,
-              mx: "auto",
+              mx: { xs: 1, sm: "auto" },
               color: "#5D4037",
               fontWeight: "600",
               fontFamily: "Inter",
@@ -1798,6 +1827,7 @@ export default function Games() {
               padding: "12px 24px",
               borderRadius: "12px",
               boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              
             }}
           >
             Register for traditional Pongal games and celebrate the harvest festival with joy! 
@@ -1819,8 +1849,8 @@ export default function Games() {
                     display: "flex",
                     flexDirection: "column",
                     bgcolor: "background.paper",
-                    minWidth: { xs: 380, sm: 300 },
-                    maxWidth: { xs: 400, sm: 400 },
+                    minWidth: { xs: 350, sm: 500 },
+                    maxWidth: { xs: 350, sm: 400 },
                     border: "3px solid #FFB300",
                     borderRadius: 4,
                     boxShadow: "0 10px 30px rgba(198, 40, 40, 0.15)",
@@ -2038,9 +2068,18 @@ export default function Games() {
           sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap" }}
         >
           <span>© 2026 C-Tech KONDATTAM  • </span>
-          <span style={{ fontFamily: "Orienta", fontSize: "1rem", marginLeft: "4px", fontWeight: 600 }}>
+          <span style={{ fontFamily: "inherit", fontSize: "1rem", marginLeft: "4px", fontWeight: 600 }}>
             🎉 Celebrating Harvest & Tradition 🎉
           </span>
+        </Typography>
+           <Typography
+          fontFamily="inherit"
+          fontSize={{ xs: "0.875rem", sm: "1rem", }}
+
+          sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", mt:3}}
+        >
+          <span> • Designed & Developed by C-Tech IT Department •</span>
+      
         </Typography>
       </Box>
 
