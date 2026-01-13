@@ -3,7 +3,8 @@ import { Box, Typography, styled } from "@mui/material";
 import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
 import { Howl } from "howler";
-import video from "../assets/pongal.mp4";
+import desktopVideo from "../assets/pongal.mp4";
+import mobileVideo from "../assets/pongal-mobile.mp4";
 import music from "../assets/music.mp3";
 
 /* ---------- 1. Styled components with video background ---------- */
@@ -38,10 +39,26 @@ const VideoBackground = styled(Box)({
   },
 });
 
-const Video = styled("video")({
+// Desktop video - visible only on larger screens
+const DesktopVideo = styled("video")({
   width: "100%",
   height: "100%",
   objectFit: "cover",
+  display: "block",
+  "@media (max-width: 450px)": {
+    display: "none",
+  },
+});
+
+// Mobile video - visible only on smaller screens
+const MobileVideo = styled("video")({
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  display: "none",
+  "@media (max-width: 450px)": {
+    display: "block",
+  },
 });
 
 const Content = styled(Box)({
@@ -154,14 +171,12 @@ const potCSS = `
     border-radius: 5px;
   }
 
-
   .design-2 {
     width: 60px;
     height: 8px;
     top: 50px;
     left: 30px;
   }
-
 
   /* Fire animation */
   .pot-fire {
@@ -588,7 +603,8 @@ export default function Loading() {
   const potPiecesRef = useRef([]);
   const riceGrainsRef = useRef([]);
   const navigate = useNavigate();
-  const videoRef = useRef(null);
+  const desktopVideoRef = useRef(null);
+  const mobileVideoRef = useRef(null);
   const soundRef = useRef(null);
   const [audioEnabled, setAudioEnabled] = useState(true);
   const [showElements, setShowElements] = useState(false);
@@ -611,7 +627,7 @@ export default function Loading() {
       soundRef.current.play();
       setTimeout(() => {
         if (!soundRef.current.playing()) {
-          setAudioEnabled(true);
+          setAudioEnabled(false);
         }
       }, 300);
     };
@@ -629,6 +645,19 @@ export default function Loading() {
         soundRef.current.stop();
       }
     };
+  }, []);
+
+  // Play appropriate videos
+  useEffect(() => {
+    const playVideo = (videoRef) => {
+      if (videoRef.current) {
+        videoRef.current.play().catch(err => console.log("Video autoplay blocked:", err));
+      }
+    };
+
+    // Play both videos, appropriate one will be visible based on screen size
+    playVideo(desktopVideoRef);
+    playVideo(mobileVideoRef);
   }, []);
 
   const startAnimations = () => {
@@ -680,13 +709,6 @@ export default function Loading() {
       delay: 3
     });
   };
-
-  /* Play video */
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(err => console.log("Video autoplay blocked:", err));
-    }
-  }, []);
 
   /* Toggle audio */
   const toggleAudio = () => {
@@ -833,9 +855,27 @@ export default function Loading() {
 
       <Screen>
         <VideoBackground>
-          <Video ref={videoRef} autoPlay muted loop playsInline>
-            <source src={video} type="video/mp4" />
-          </Video>
+          {/* Desktop video - shows on screens larger than 450px */}
+          <DesktopVideo 
+            ref={desktopVideoRef} 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          >
+            <source src={desktopVideo} type="video/mp4" />
+          </DesktopVideo>
+          
+          {/* Mobile video - shows on screens up to 450px */}
+          <MobileVideo 
+            ref={mobileVideoRef} 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          >
+            <source src={mobileVideo} type="video/mp4" />
+          </MobileVideo>
         </VideoBackground>
 
         <AudioButton onClick={toggleAudio}>
