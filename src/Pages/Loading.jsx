@@ -890,7 +890,7 @@ export default function Loading() {
               color: "#FFD54F",
               fontWeight: "bold",
               fontSize: { xs: "2rem", sm: "5rem", md: "6rem" },
-              fontFamily: "'Keania One', sans-serif",
+                fontFamily: "'Poppins', sans-serif",
               textShadow: "3px 3px 6px rgba(0, 0, 0, 0.7)",
               opacity: 0,
               transform: "translateY(-50px)",
